@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Семён Семёныч: аватарка</title>
+<style>
+  :root { --bg:#faf5ee; --card:#fff; --ink:#2b2420; --muted:#7a6d63; --accent:#b8742a; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1d1916; --card:#28221e; --ink:#f1e9e0; --muted:#b3a597; --accent:#e0a35a; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:1000px; margin:0 auto; padding:28px 16px 48px; }
+  h1 { font-size:28px; margin:0 0 6px; }
+  .lead { color:var(--muted); margin:0 0 24px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px; }
+  .card { background:var(--card); border-radius:18px; padding:14px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+  .card img { width:100%; border-radius:12px; display:block; }
+  .row { display:flex; align-items:center; gap:12px; margin-top:12px; }
+  .circle { width:56px; height:56px; border-radius:50%; object-fit:cover; flex:none; }
+  .num { font-weight:700; font-size:20px; }
+  .card p { margin:4px 0 0; color:var(--muted); font-size:15px; }
+  .tag { display:inline-block; background:var(--accent); color:#fff; border-radius:8px; padding:1px 8px; font-size:13px; margin-left:6px; vertical-align:middle; }
+  .note { margin-top:28px; color:var(--muted); font-size:15px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Семён Семёныч</h1>
+  <p class="lead">Виртуальный администратор клуба «Круг Силы». Три варианта аватарки. Маленький кружок рядом с каждой картинкой показывает, как она будет выглядеть в списке чатов Телеграма.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="semenych_1.jpg" alt="Вариант 1">
+      <div class="row"><img class="circle" src="semenych_1.jpg" alt="">
+        <div><span class="num">Вариант 1</span><span class="tag">советую</span><p>Горчичный свитер, смотрит прямо и улыбается. Лицо крупнее всего, в кружке читается лучше остальных.</p></div></div>
+    </div>
+    <div class="card">
+      <img src="semenych_2.jpg" alt="Вариант 2">
+      <div class="row"><img class="circle" src="semenych_2.jpg" alt="">
+        <div><span class="num">Вариант 2</span><p>Тёмно-зелёный свитер, наклонил голову и подмигивает. Хитрее и озорнее.</p></div></div>
+    </div>
+    <div class="card">
+      <img src="semenych_3.jpg" alt="Вариант 3">
+      <div class="row"><img class="circle" src="semenych_3.jpg" alt="">
+        <div><span class="num">Вариант 3</span><p>Свитер цвета бордо, кепка-восьмиклинка, смеётся. Самый народный.</p></div></div>
+    </div>
+  </div>
+  <p class="note">Как поставить: в BotFather команда /setuserpic, выбрать бота и прислать картинку.</p>
+</main>
+</body>
+</html>
