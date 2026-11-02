@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Круг Силы: правила поведения</title>
+<style>
+@font-face{font-family:'Golos Text';font-weight:400;font-display:swap;src:url(fonts/GolosText-400-cyr.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Golos Text';font-weight:400;font-display:swap;src:url(fonts/GolosText-400-lat.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20BD}
+@font-face{font-family:'Manrope';font-weight:800;font-display:swap;src:url(fonts/Manrope-700-cyr.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-weight:800;font-display:swap;src:url(fonts/Manrope-700-lat.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20BD}
+:root{--bg:#121822;--bg2:#19212e;--line:#2d3746;--ink:#f2efe8;--muted:#aeb4c0;--fire:#e9a066;--a:#cf742e;--b:#5a84dc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 'Golos Text',-apple-system,Segoe UI,Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.big,.kick,.step b{font-family:Manrope,'Golos Text',sans-serif;font-weight:800}
+a{color:var(--fire)}
+.w{max-width:980px;margin:0 auto;padding:0 28px}
+.hero{min-height:92vh;display:flex;align-items:flex-end;background:linear-gradient(180deg,rgba(18,24,34,.12) 25%,rgba(18,24,34,.72) 68%,var(--bg) 100%),url(hero.jpg) center 60%/cover no-repeat}
+.hero .w{width:100%;padding-bottom:54px}
+h1{font-size:clamp(38px,7vw,74px);line-height:1.02;letter-spacing:-.03em;margin:0 0 16px;text-wrap:balance}
+.hero p{font-size:clamp(18px,2.4vw,23px);line-height:1.4;max-width:680px;margin:0 0 12px}
+.hero small{color:var(--muted);font-size:15px}
+section{padding:68px 0;border-top:1px solid var(--line)}
+.kick{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--fire);margin:0 0 12px}
+h2{font-size:clamp(28px,4.4vw,44px);line-height:1.1;letter-spacing:-.025em;margin:0 0 18px;text-wrap:balance}
+h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
+.lead{color:var(--muted);max-width:720px;margin:0 0 30px}
+.four{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 36px}
+.four h3{margin:0 0 6px}
+.four p{margin:0;color:var(--muted);font-size:16.5px}
+/* диаграмма: было и стало, подписи прямо у столбцов */
+.legend{display:flex;gap:20px;font-size:14px;color:var(--muted);margin:0 0 20px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+.chart{margin:0 0 28px}
+.q{font-size:16.5px;margin:0 0 7px}
+.bar{display:grid;grid-template-columns:minmax(0,1fr);margin:0 0 2px}
+.bar span{display:flex;align-items:center;height:26px;min-width:4px}
+.fill{display:block;height:16px;border-radius:0 4px 4px 0;flex:none}
+.bar em{font-style:normal;font-size:14px;color:var(--ink);margin-left:9px;white-space:nowrap}
+.grp{margin:0 0 22px}
+.tag{display:inline-block;font:400 12px/1 'Golos Text',sans-serif;border:1px solid var(--line);border-radius:5px;padding:4px 7px;color:var(--muted);vertical-align:2px}
+.src{font-size:14px;color:var(--muted);margin:6px 0 0}
+.big{display:block;font-size:44px;line-height:1;letter-spacing:-.03em;margin-bottom:8px}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 30px;margin:0 0 26px}
+.nums small{display:block;font-size:15px;line-height:1.4;color:var(--muted)}
+.note{border-left:3px solid var(--a);padding:2px 0 2px 18px;margin:26px 0 0;font-size:16.5px;color:var(--muted)}
+.note b{color:var(--ink);font-weight:400}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:15.5px;line-height:1.45}
+th{text-align:left;font-weight:400;color:var(--muted);font-size:13.5px;padding:0 16px 9px 0;border-bottom:1px solid var(--line)}
+td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.rules{counter-reset:r;list-style:none;padding:0;margin:0}
+.rules li{counter-increment:r;position:relative;padding:17px 0 17px 54px;border-bottom:1px solid var(--line)}
+.rules li:before{content:counter(r);position:absolute;left:0;top:13px;font:800 28px/1.2 Manrope,sans-serif;color:var(--fire)}
+.rules b{display:block;font-weight:400;font-size:19.5px;line-height:1.35;margin-bottom:3px}
+.rules span{color:var(--muted);font-size:16px}
+.vals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 36px}
+.vals blockquote{margin:0;font:800 21px/1.25 Manrope,sans-serif;letter-spacing:-.015em}
+.vals p{margin:6px 0 0;color:var(--muted);font-size:16px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.step{background:var(--bg2);padding:20px}
+.step b{display:block;font-size:19px;margin-bottom:6px}
+.step span{color:var(--muted);font-size:16px}
+.src-list{font-size:15px;line-height:1.5;padding:0;list-style:none;margin:0}
+.src-list li{padding:9px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+footer{padding:30px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:720px){
+ body{font-size:17px}
+ .w{padding:0 16px}
+ section{padding:50px 0}
+ .four,.vals,.steps{grid-template-columns:1fr}
+ .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .big{font-size:36px}
+ .hero{background-position:62% 60%}
+ table{min-width:620px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="w">
+  <h1>Как мы ведём себя в Круге</h1>
+  <p>Правила поведения мужского сообщества, вживую и в Telegram. Что говорят цифры, как устроено у других и что предлагаем у себя.</p>
+  <small>Сообщество «Круг Силы» · черновик на обсуждение · 2 ноября 2026</small>
+</div></header>
+
+<section><div class="w">
+  <p class="kick">Главное за минуту</p>
+  <h2>Правила нужны не для порядка, а чтобы круг остался кругом</h2>
+  <div class="four">
+    <div><h3>Близких друзей у мужчин стало меньше</h3><p>В США доля мужчин без близких друзей выросла за 30 лет примерно с 3% до 15%. В России мужчины общаются с друзьями заметно реже женщин.</p></div>
+    <div><h3>Правила работают, когда их видно</h3><p>В большом эксперименте показ правил новичкам поднял соблюдение более чем на 8 пунктов, а участие новичков в среднем на 70%. Это Reddit, а не мужской клуб, но механизм понятный.</p></div>
+    <div><h3>Сильные сообщества сходятся в одном</h3><p>Конфиденциальность, опыт вместо поучений, запрет продавать в лоб, ответственность за гостя, верность слову, честные сделки. Мы это проверили по их собственным правилам.</p></div>
+    <div><h3>Что предлагаем</h3><p>13 правил поведения, 12 правил для Telegram и три шага при нарушении. Всё это предложение: решает основатель вместе с сообществом.</p></div>
+  </div>
+</div></section>
+
+<section><div class="w">
+  <p class="kick">Зачем мужчине круг</p>
+  <h2>За 30 лет круг близких друзей сжался</h2>
+  <p class="lead">Самый подробный опрос по этой теме, США, 2021 год, 2019 взрослых. Прямых данных по России за такой срок мы не нашли.</p>
+  <div class="legend"><span><i style="background:var(--b)"></i>1990</span><span><i style="background:var(--a)"></i>2021</span></div>
+  <div class="chart">
+    <div class="grp"><p class="q">Мужчины без единого близкого друга</p>
+      <div class="bar" title="1990: около 3%, расчётная оценка"><span><i class="fill" style="width:4%;background:var(--b)"></i><em>около 3%</em></span></div>
+      <div class="bar" title="2021: 15%"><span><i class="fill" style="width:20%;background:var(--a)"></i><em>15%</em></span></div></div>
+    <div class="grp"><p class="q">Мужчины, у которых 6 и больше близких друзей</p>
+      <div class="bar" title="1990: 55%"><span><i class="fill" style="width:75%;background:var(--b)"></i><em>55%</em></span></div>
+      <div class="bar" title="2021: 27%"><span><i class="fill" style="width:37%;background:var(--a)"></i><em>27%</em></span></div></div>
+    <div class="grp"><p class="q">Молодые мужчины, которые со своей бедой первым делом идут к другу</p>
+      <div class="bar" title="1990: 45%"><span><i class="fill" style="width:61%;background:var(--b)"></i><em>45%</em></span></div>
+      <div class="bar" title="2021: 22%"><span><i class="fill" style="width:30%;background:var(--a)"></i><em>22%</em></span></div></div>
+  </div>
+  <div class="nums">
+    <div><span class="big">21%</span><small>мужчин получили эмоциональную поддержку от друга за последнюю неделю. У женщин 41%.</small></div>
+    <div><span class="big">17%</span><small>мужчин без близких друзей по данным 2024 года. Цифра из вторичного пересказа.</small></div>
+    <div><span class="big">87 лет</span><small>идёт исследование Гарварда: довольные отношениями в 50 оказались здоровее в 80. Это связь, причина не доказана.</small></div>
+  </div>
+  <p class="src"><span class="tag">надёжность: высокая</span> Survey Center on American Life, Ipsos. Но это США, не Россия. <a href="https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/" target="_blank" rel="noopener">Отчёт</a> · <a href="https://www.americansurveycenter.org/why-mens-social-circles-are-shrinking/" target="_blank" rel="noopener">о мужчинах</a> · <a href="https://news.harvard.edu/gazette/story/2023/02/work-out-daily-ok-but-how-socially-fit-are-you" target="_blank" rel="noopener">Гарвард</a></p>
+
+  <h3 style="margin-top:50px">В России друзей называют, а видятся реже</h3>
+  <p class="lead">ВЦИОМ, 2023 год, 1600 человек. Мужчины называют больше друзей, чем женщины, но общаются реже. Картина «мужчинам просто хуже» была бы неточной.</p>
+  <div class="legend"><span><i style="background:var(--b)"></i>Женщины</span><span><i style="background:var(--a)"></i>Мужчины</span></div>
+  <div class="chart">
+    <div class="grp"><p class="q">Общаются с друзьями каждый день</p>
+      <div class="bar" title="Женщины: 41%"><span><i class="fill" style="width:56%;background:var(--b)"></i><em>41%</em></span></div>
+      <div class="bar" title="Мужчины: 28%"><span><i class="fill" style="width:38%;background:var(--a)"></i><em>28%</em></span></div></div>
+    <div class="grp"><p class="q">Общаются раз в месяц и реже</p>
+      <div class="bar" title="Женщины: 20%"><span><i class="fill" style="width:27%;background:var(--b)"></i><em>20%</em></span></div>
+      <div class="bar" title="Мужчины: 31%"><span><i class="fill" style="width:42%;background:var(--a)"></i><em>31%</em></span></div></div>
+  </div>
+  <div class="nums">
+    <div><span class="big">8 и 5</span><small>друзей в среднем называют мужчины и женщины</small></div>
+    <div><span class="big">16%</span><small>россиян говорят, что друзей нет. В 2013 году было 11%.</small></div>
+    <div><span class="big">1 из 3</span><small>мужчин в Москве не называет лучшего друга. У женщин 36%, разницы почти нет. Опрос Superjob, не репрезентативный.</small></div>
+  </div>
+  <p class="src"><span class="tag">надёжность: высокая</span> <a href="https://wciom.ru/analytical-reviews/analiticheskii-obzor/druzhba-v-neprostye-vremena" target="_blank" rel="noopener">ВЦИОМ</a> · <span class="tag">слабая</span> <a href="https://moskvichmag.ru/?p=303640" target="_blank" rel="noopener">Superjob в пересказе</a></p>
+
+  <div class="note"><b>Помогают ли мужские сообщества?</b> Обзор 2022 года по 52 исследованиям «мужских мастерских» (Men's Sheds) связывает участие с лучшим самочувствием и меньшей изоляцией. Большинство исследований качественные, причинность не доказана. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8928410" target="_blank" rel="noopener">Обзор</a></div>
+</div></section>
+
+<section><div class="w">
+  <p class="kick">Работают ли правила</p>
+  <h2>Лучшее доказательство пришло не из мужского клуба, а из Reddit</h2>
+  <div class="nums">
+    <div><span class="big">+8 п.п.</span><small>соблюдение правил новичками, когда правила им показали</small></div>
+    <div><span class="big">+70%</span><small>в среднем выросло участие новичков в обсуждениях</small></div>
+    <div><span class="big">13 млн</span><small>подписчиков сообщества r/science, 2190 обсуждений</small></div>
+  </div>
+  <p>Вывод простой: правило, которое лежит в документе, почти не работает. Правило, которое новичок увидел в нужный момент, и дисциплинирует, и зовёт участвовать, потому что человек понимает, как здесь принято.</p>
+  <p class="src"><span class="tag">надёжность: высокая</span> Matias, журнал PNAS, 2019. Но это онлайн-форум, не мужской клуб. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6525516" target="_blank" rel="noopener">Статья</a></p>
+
+  <h3 style="margin-top:40px">Молчуны это норма, а не брак</h3>
+  <p>Эвристика Нильсена 90-9-1: в онлайн-сообществах около 90% читают, 9% иногда пишут, 1% создают почти всё. Это не закон природы, но и повода считать молчащих мёртвыми нет. Совет оттуда же: снижать барьер, делать участие лёгким. Реакция, короткое «могу помочь» и ответ на прямой вопрос бота как раз такие шаги.</p>
+  <p class="src"><span class="tag">надёжность: средняя</span> <a href="https://www.nngroup.com/articles/participation-inequality/" target="_blank" rel="noopener">Nielsen Norman Group, 2006</a></p>
+  <div class="note"><b>Обратный пример.</b> На нашей встрече рассказывали о банном сообществе, которое убрало 20-30% пассивных участников, и активность выросла. Это один рассказ, а не исследование. Прямых исследований о том, как правила влияют на удержание в мужских сообществах, мы не нашли.</div>
+</div></section>
+
+<section><div class="w">
+  <p class="kick">Как у других</p>
+  <h2>Что сообщества требуют от своих участников</h2>
+  <div class="scroll"><table>
+    <tr><th>Сообщество</th><th>Как устроено</th><th>Правило, которое стоит запомнить</th></tr>
+    <tr><td>ManKind Project, мужские круги</td><td>Открытые мужские группы</td><td>Сказанное конфиденциально, говорю о своём опыте, совет только по просьбе, продажи запрещены, можно пропустить ход</td></tr>
+    <tr><td>EO Forum, предприниматели</td><td>Группы по 6-10 человек, раз в месяц</td><td>Полная конфиденциальность, опыт вместо советов, в кодексе честные сделки</td></tr>
+    <tr><td>Rotary</td><td>Сеть клубов по профессиям</td><td>Проверка из четырёх вопросов: это правда, это честно для всех, укрепит ли дружбу, полезно ли всем</td></tr>
+    <tr><td>BNI</td><td>Один человек на специальность в группе</td><td>Сначала даёшь, потом получаешь. Частые пропуски ведут к выбыванию, заместитель пропуском не считается</td></tr>
+    <tr><td>Лондонские клубы</td><td>Старые закрытые клубы</td><td>Член клуба отвечает за гостя, без него гостя не впустят</td></tr>
+    <tr><td>Эквиум, Россия</td><td>Взнос в Москве 450 тыс. ₽ в год (2022), одобряют около 2% заявок</td><td>Вход по рекомендации. Модель без дивидендов: «доходов для владельцев нет, но и убытков быть не должно»</td></tr>
+    <tr><td>Reforma, Россия</td><td>Закрытый клуб</td><td>Строгие правила среды, включая запрет прямых продаж</td></tr>
+    <tr><td>Миллиард в бане, Россия</td><td>Оборот от 100 млн ₽, встречи в бане</td><td>Отбор по совместимости</td></tr>
+    <tr><td>Твоя Опора, Россия</td><td>Форум-группы по 5-7 человек</td><td>Малая группа как рабочая единица</td></tr>
+    <tr><td>Аномалия, Россия</td><td>5000 ₽ в месяц, более 28 000 участников</td><td>Массовая модель, полная противоположность закрытым клубам</td></tr>
+    <tr><td>Telegram 101, закрытый чат</td><td>Клуб в Telegram</td><td>Без визиток и рекламы в чате, запрос с конкретикой, контакт в личку с согласия, без массовых рассылок</td></tr>
+  </table></div>
+  <p class="src"><span class="tag">надёжность: средняя</span> Для западных организаций это их собственные правила. <span class="tag">слабая</span> Для российских клубов это данные клубов о себе и пересказ в прессе: <a href="https://www.spot.uz/ru/2022/05/05/equium/" target="_blank" rel="noopener">Эквиум</a>, <a href="https://www.sostav.ru/blogs/285908/86813" target="_blank" rel="noopener">обзор Sostav</a>. Взносы большинство клубов открыто не публикует. Правила YPO и устав именно мужского клуба на русском мы найти не смогли.</p>
+
+  <h3 style="margin-top:44px">Что общего и что мы берём</h3>
+  <div class="scroll"><table>
+    <tr><th>Норма</th><th>У кого проверена</th><th>Что берём</th></tr>
+    <tr><td>Конфиденциальность</td><td>ManKind Project, EO Forum, правило Чатем-Хаус</td><td>Мысль выносить можно, имя и подробности нельзя</td></tr>
+    <tr><td>Опыт вместо поучений</td><td>ManKind Project, EO Forum</td><td>Говорим из своего опыта, совет по просьбе</td></tr>
+    <tr><td>Не продавать в лоб</td><td>ManKind Project, EO Forum, Reforma, Telegram 101</td><td>Услуга только в ответ на запрос</td></tr>
+    <tr><td>Ответственность за гостя</td><td>Клубы Garrick и East India</td><td>За приведённого отвечаешь как за себя</td></tr>
+    <tr><td>Слово и явка</td><td>BNI, ManKind Project</td><td>Записался, значит приехал</td></tr>
+    <tr><td>Честные сделки</td><td>Rotary, EO Forum</td><td>Условия называются сразу</td></tr>
+    <tr><td>Последствия нарушений</td><td>ManKind Project, BNI</td><td>Три шага, а не молчание и не бан без разговора</td></tr>
+  </table></div>
+</div></section>
+
+<section><div class="w">
+  <p class="kick">Исходя из наших ценностей</p>
+  <h2>Из чего вырастают правила</h2>
+  <p class="lead">Это прозвучало в наших разговорах. Чужие правила мы берём только там, где они совпадают с этим.</p>
+  <div class="vals">
+    <div><blockquote>Просто берегите друг друга</blockquote><p>Кто-то старался и что-то предложил. Высмеять легко, вернуть человека в разговор потом трудно.</p></div>
+    <div><blockquote>Вне семьи, вне бизнеса</blockquote><p>Сюда приходят побыть с мужиками. Рабочие вопросы решаются попутно, а не вместо этого.</p></div>
+    <div><blockquote>Душевно и по-братски</blockquote><p>Без пафоса и без статусных игр. Тут всё просто и легко.</p></div>
+    <div><blockquote>Чем ты полезен</blockquote><p>Контакт, навык, разбор случая, организация встречи. Не нужно быть организатором, нужно быть полезным.</p></div>
+    <div><blockquote>Доверие проверяется временем</blockquote><p>По знакомству и на деле. Поэтому за приведённого человека отвечает тот, кто его привёл.</p></div>
+    <div><blockquote>Сначала смыслы</blockquote><p>Устав, правила и ценности нужны, чтобы было понятно, зачем мы вместе. Контроль здесь не цель.</p></div>
+  </div>
+</div></section>
+
+<section><div class="w">
+  <p class="kick">Предложение</p>
+  <h2>13 правил поведения</h2>
+  <ol class="rules">
+    <li><b>Что сказано в Круге, остаётся в Круге.</b><span>Мысль использовать можно, имя и подробности нельзя. Особенно про чужие деньги, семью и здоровье.</span></li>
+    <li><b>Слово держим.</b><span>Записался, значит приехал. Не можешь, предупреди заранее: за твоё место уже заплачено.</span></li>
+    <li><b>Помогаем делом.</b><span>Обещал контакт или совет, сделай. Не можешь, так и скажи.</span></li>
+    <li><b>Говорим из своего опыта.</b><span>«У меня было так» вместо «тебе надо так». Совет только по просьбе.</span></li>
+    <li><b>Не продаём в лоб.</b><span>Услугу предлагаем, когда спросили или есть запрос. Знакомство не повод для воронки.</span></li>
+    <li><b>Честные условия.</b><span>Со своими особенно. Цена, сроки, риски называются сразу. Проверка простая: это правда и это честно для обоих?</span></li>
+    <li><b>Конфликт решаем лично, а не в общем чате.</b><span>Сначала разговор один на один. Не вышло, зовём того, кому доверяют оба.</span></li>
+    <li><b>Без унижений.</b><span>Крепкое слово не преступление, оскорбление человека да. Шутим вместе, а не над кем-то.</span></li>
+    <li><b>Политику и религию в сообщество не несём.</b><span>Они ссорят своих и несут риск для всех, кто в чате.</span></li>
+    <li><b>Выпил: не за руль и не на технику.</b><span>Без исключений. Организатор вправе не допустить, и спорить с ним не надо.</span></li>
+    <li><b>За гостя отвечаешь как за себя.</b><span>Привёл, значит познакомил, объяснил правила и отвечаешь за его поведение.</span></li>
+    <li><b>Снимать и выкладывать людей только с их согласия.</b><span>У кого-то закрытая личная жизнь или партнёры, которым это знать не нужно. В России согласие на публикацию изображения требует и закон.</span></li>
+    <li><b>Займы и вложения между участниками под личную ответственность.</b><span>Сообщество не поручитель и не судья. Проверяй так же, как проверил бы незнакомца.</span></li>
+  </ol>
+</div></section>
+
+<section><div class="w">
+  <p class="kick">Telegram</p>
+  <h2>12 правил для чата</h2>
+  <p class="lead">Чат живёт, пока каждое уведомление стоит того, чтобы его открыть. Как только чат начнут отключать, он умрёт.</p>
+  <ol class="rules">
+    <li><b>Один чат на всех.</b><span>Подразделы в других сообществах, по рассказам, глохли. Сначала живой общий чат, потом всё остальное.</span></li>
+    <li><b>Спор двух человек уходит в личку.</b><span>Обсудили три реплики, дальше напрямую. Итог можно вернуть в чат одной строкой.</span></li>
+    <li><b>Запрос пишем конкретно.</b><span>Что нужно, в каком городе, к какому сроку, какой бюджет. По такому запросу можно помочь сразу.</span></li>
+    <li><b>Отвечаем коротко, детали в личке.</b><span>«Могу помочь, напишу» лучше простыни на весь чат.</span></li>
+    <li><b>Рекламы нет.</b><span>Свою услугу называем в ответ на запрос. Пересланные посты и ссылки на свой канал только по согласованию.</span></li>
+    <li><b>#визитка выкладывается один раз, при вступлении.</b><span>Рассказал о себе, и все знают, к кому идти.</span></li>
+    <li><b>Написать в личку можно, рассылать нельзя.</b><span>Один человек, понятный повод, «откуда я тебя знаю». Не стесняйся: прямо написать здесь нормально. Один и тот же текст десятерым это спам.</span></li>
+    <li><b>Голосовые короткие.</b><span>Администратор расшифрует, но четыре подряд это уже монолог. Важное лучше текстом.</span></li>
+    <li><b>Скриншоты и пересылка наружу только с согласия автора.</b><span>Первое правило работает и здесь. Телефоны, документы и данные чужих людей в чат не выкладываем.</span></li>
+    <li><b>Отвечаем на просьбы и встречаем новичков.</b><span>Молчать можно. Реакция стоит секунду, а человек, который написал и услышал тишину, больше не напишет.</span></li>
+    <li><b>В чате работает виртуальный администратор, и это видно.</b><span>Он читает сообщения для утренней сводки и расшифровки. Сырые сообщения стираются не позже чем через 48 часов.</span></li>
+    <li><b>У нас есть запасной канал.</b><span>Звонки в Telegram в России ограничены с августа 2025 года, в феврале 2026 года Роскомнадзор подтвердил замедление, а в апреле измерения OONI показали сбои в 95% проверок. Свежее апреля данных мы не нашли. Какой будет запасной канал, решает основатель.</span></li>
+  </ol>
+  <p class="src"><a href="https://101-app.com/blog/telegram-101-closed-club" target="_blank" rel="noopener">Правила Telegram 101</a> · <a href="https://ru.wikipedia.org/wiki/Блокировка_Telegram_в_России_(2026)" target="_blank" rel="noopener">хронология ограничений Telegram</a> · <a href="https://ru.themoscowtimes.com/2026/04/10/telegram-polnostyu-zablokirovali-vrossii-a192278" target="_blank" rel="noopener">The Moscow Times, апрель 2026</a></p>
+</div></section>
+
+<section><div class="w">
+  <p class="kick">Если правило нарушено</p>
+  <h2>Три шага, и только потом выход</h2>
+  <div class="steps">
+    <div class="step"><b>1. Личный разговор</b><span>Один на один, без публичной порки. Чаще всего человек просто не понял, как здесь принято.</span></div>
+    <div class="step"><b>2. Предупреждение</b><span>От основателя: что случилось и что будет при повторе.</span></div>
+    <div class="step"><b>3. Выход</b><span>Спокойно, без обсуждения человека в чате.</span></div>
+  </div>
+  <div class="note"><b>Сразу на выход:</b> предательство доверия, мошенничество, насилие.</div>
+</div></section>
+
+<section><div class="w">
+  <p class="kick">Что решить</p>
+  <h2>Три вопроса к основателю</h2>
+  <div class="four">
+    <div><h3>Где граница по мату и шуткам</h3><p>Мы предлагаем: мат не запрещать, запрещать унижение человека. Шутки на грани оставить на усмотрение основателя.</p></div>
+    <div><h3>Что с теми, кто молчит</h3><p>Мы предлагаем не считать молчание нарушением. Раз в полгода основатель лично спрашивает: «Ты с нами?». Нет ответа: выход без обид, с правом вернуться.</p></div>
+    <div><h3>Какой запасной канал</h3><p>Мы предлагаем выбрать его сейчас, пока Telegram работает, и собрать согласие оставить контакт.</p></div>
+  </div>
+</div></section>
+
+<section><div class="w">
+  <p class="kick">Источники</p>
+  <h2>Откуда это и чего мы не нашли</h2>
+  <ul class="src-list">
+    <li><a href="https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/" target="_blank" rel="noopener">Survey Center on American Life, 2021</a>: дружба в США, n=2019. Оценка около 3% мужчин в 1990 году это расчёт, а не прямой замер.</li>
+    <li><a href="https://wciom.ru/analytical-reviews/analiticheskii-obzor/druzhba-v-neprostye-vremena" target="_blank" rel="noopener">ВЦИОМ, 2023</a>: дружба в России, n=1600.</li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6525516" target="_blank" rel="noopener">Matias, PNAS, 2019</a>: эксперимент с показом правил.</li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8928410" target="_blank" rel="noopener">Обзор о Men's Sheds, 2022</a>: 52 исследования.</li>
+    <li><a href="https://www.nngroup.com/articles/participation-inequality/" target="_blank" rel="noopener">Nielsen, 2006</a>: неравенство участия.</li>
+    <li><a href="https://newengland.mkpusa.org/?p=6848" target="_blank" rel="noopener">ManKind Project, правила круга</a> и <a href="https://mankindpride.mkpusa.org/group-agreements/" target="_blank" rel="noopener">соглашения группы</a>.</li>
+    <li><a href="https://eonetwork.org/one/executive-peer-groups/" target="_blank" rel="noopener">EO Forum</a> и <a href="https://eo-global.docs.cognivis.ai/books/forum/page/basic-information-about-forum" target="_blank" rel="noopener">его руководство</a>.</li>
+    <li><a href="https://en.wikipedia.org/wiki/The_Four-Way_Test" target="_blank" rel="noopener">Проверка Rotary из четырёх вопросов</a>.</li>
+    <li><a href="https://www.bni.com/the-latest/blog-news/why-bni-allows-only-one-profession-per-chapter/" target="_blank" rel="noopener">BNI: один человек на специальность</a>.</li>
+    <li><a href="https://garrickclub.co.uk/club_info_enquiries" target="_blank" rel="noopener">Garrick Club</a> и <a href="https://eastindiaclub.co.uk/contact" target="_blank" rel="noopener">East India Club</a>: гости.</li>
+    <li><a href="https://www.chathamhouse.org/about-us/chatham-house-rule" target="_blank" rel="noopener">Правило Чатем-Хаус</a>: сайт не открылся напрямую, текст сверен по вторичным источникам.</li>
+    <li><strong style="font-weight:400;color:var(--ink)">Не нашли:</strong> устава именно мужского клуба на русском, правил YPO, надёжных данных об одиночестве предпринимателей, исследований о связи правил и удержания участников. Правовые оговорки надо проверить у юриста.</li>
+  </ul>
+</div></section>
+
+<footer><div class="w">Черновик для обсуждения. Здесь нет имён, анкет и переписки участников.</div></footer>
+
+</body>
+</html>
