@@ -16,21 +16,451 @@ ul.pts{padding-left:20px;max-width:44em}ul.pts li{margin:10px 0}
 .why{margin:12px 0;font-size:16px}dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0 0 12px;font-size:15px}dt{color:var(--mute)}dd{margin:0;overflow-wrap:anywhere}.miss{color:#a4442c}
 .chips{display:flex;flex-wrap:wrap;gap:5px}.chips span{font-size:13px;color:var(--mute);background:#f3ebdf;border-radius:4px;padding:1px 6px}.chips span.on{color:var(--ink);background:#eadcc7}
 table{border-collapse:collapse;width:100%;background:var(--paper);border:1px solid var(--line);font-size:16px}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:14px;color:var(--mute);font-weight:600}td.n{text-align:right;white-space:nowrap;font-weight:600}tfoot td{font-weight:700;border:0}
+.wrap{overflow-x:auto}table.st th:not(:first-child){text-align:right}table.st td,table.st th{font-size:15px}details{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}.dh{margin:26px 0 10px}
 .prob{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;margin-top:22px}.prob div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px}.prob h3{margin-bottom:8px}.prob p{margin:0 0 8px;font-size:16px}.prob .fix{color:var(--A);margin:0}
 footer{color:var(--mute);font-size:14px}
 @media(max-width:640px){section{padding:40px 16px}.tiles{grid-template-columns:repeat(2,1fr)}.cards,.prob{grid-template-columns:minmax(0,1fr)}th,td{padding:8px;font-size:15px}}
 </style></head><body>
-<section><p class="num">Пример расчёта, 4 ноября 2026</p><h1>Кого из компаний прорабатывать в первую очередь</h1>
+<section><p class="num">Пример расчёта и проба на базе, 5 ноября 2026</p><h1>Кого из компаний прорабатывать в первую очередь</h1>
 <p class="lead">Распределение на Tier A, B, C и резерв для WSM как заказчиков фото-, видео- и AI-продакшна. Веса и пороги взяты из ТЗ без изменений.</p>
-<p>Компании для примера подобраны вручную, чтобы показать всю шкалу: от гигантов до технического юрлица. Настоящий список строится из базы ФНС на 2 млн юрлиц, поэтому доля A здесь ни о чём не говорит.</p></section>
+<p>Сначала проба: 60 случайных компаний из базы ФНС на 2 млн юрлиц. По ней решаем, насколько низко опускаться по доходу. Дальше пример расчёта на 21 компании, подобранной вручную, чтобы показать всю шкалу: доля A в нём ни о чём не говорит.</p></section>
+<section><p class="num">1. Проба на базе</p><h2>В пробе ниже 300 млн ₽ нет ни одного Tier A и B, а опта и технических юрлиц 26 из 60</h2>
+<div class="wrap"><table class="st"><thead><tr><th>Доход за 2025 год</th><th>Компаний в базе</th><th>Подходят</th><th>Опт</th><th>Холдинг, техн.</th><th>Закрыта, без выручки</th><th>Интересны WSM</th><th>Tier A / B / C / резерв</th></tr></thead><tbody><tr><td>от 50 млрд ₽</td><td class="n">172</td><td class="n">2</td><td class="n">2</td><td class="n">5</td><td class="n">1</td><td class="n"><b>2</b></td><td class="n">2 / 0 / 6 / 2</td></tr><tr><td>10-50 млрд ₽</td><td class="n">2 428</td><td class="n">6</td><td class="n">3</td><td class="n">1</td><td class="n">0</td><td class="n"><b>4</b></td><td class="n">5 / 1 / 4 / 0</td></tr><tr><td>1-10 млрд ₽</td><td class="n">36 433</td><td class="n">4</td><td class="n">5</td><td class="n">1</td><td class="n">0</td><td class="n"><b>1</b></td><td class="n">1 / 2 / 7 / 0</td></tr><tr><td>300 млн-1 млрд ₽</td><td class="n">74 793</td><td class="n">5</td><td class="n">2</td><td class="n">3</td><td class="n">0</td><td class="n"><b>4</b></td><td class="n">2 / 3 / 5 / 0</td></tr><tr><td>100-300 млн ₽</td><td class="n">151 198</td><td class="n">6</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n"><b>1</b></td><td class="n">0 / 0 / 8 / 2</td></tr><tr><td>50-100 млн ₽</td><td class="n">154 482</td><td class="n">9</td><td class="n">0</td><td class="n">1</td><td class="n">0</td><td class="n"><b>3</b></td><td class="n">0 / 0 / 3 / 7</td></tr></tbody></table></div>
+<ul class="pts"><li><b>Как читать.</b> Подходят: работающая компания, не опт и не техническое юрлицо. Интересны: часть подходящих с отраслью из шкалы и внешним признаком (знак, сайт, сеть, крупный штат). Разметка ручная, по названию, коду отрасли и карточке.</li>
+<li><b>Точность низкая.</b> На ступень приходится 10 компаний, так что доли показывают порядок, а не точное число: 4 из 10 в реальности могут быть и 2, и 7.</li>
+<li><b>Ниже 300 млн ₽ в пробе нет ни одного A и B.</b> Из 20 компаний только у одной есть товарный знак, и это опт. Массово туда спускаться незачем.</li>
+<li><b>Отсев по штату был бы ошибкой.</b> Все 4 интересные компании на ступени 300 млн ₽ до 1 млрд ₽ имеют меньше 50 сотрудников, включая Крошку Картошку.</li>
+<li><b>Tier A очень чувствителен к порогу.</b> При пороге 6 в A попадают 10 компаний из 60, при пороге 8 их 5, и все они с доходом от 1 млрд ₽. Если доли подтвердятся, это около 20 000 и около 4 000 компаний в A по базе.</li>
+<li><b>Доход бывает не выручкой.</b> Сеть Связной: 70 млрд ₽ дохода при нулевой выручке. Для расчёта берём выручку из отчётности.</li></ul>
+<h3 class="dh">Все 60 компаний: показатели, балл, состав балла, причина</h3><details><summary>от 50 млрд ₽: 10 компаний</summary><div class="cards"><article class="card">
+<header><div><h3>ООО &quot;ИНВЕСТСТРОЙ&quot;</h3><p class="inn">ИНН 2310141799</p></div>
+<div class="score tA"><b>10</b><small>A</small></div></header>
+<p class="why">Интересна. Парк Краснодар: посещения, мероприятия, 2 знака. Выручка упала на 88%, сверить</p>
+<dl><dt>Выручка</dt><dd>88,8 млрд ₽ (2025)</dd><dt>Рост</dt><dd>−87,6%</dd>
+<dt>Сотрудники</dt><dd>661 (2025)</dd><dt>Товарные знаки</dt><dd>2</dd>
+<dt>Отрасль</dt><dd>Потребительский бренд</dd><dt>Сайт</dt><dd>parkkrasnodar.com</dd><dt>Присутствие</dt><dd>Краснодарский край</dd></dl>
+<div class="chips"><span class="on">выручка 5</span><span class="on">штат 1</span><span class="on">знаки 1,5</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ФАВ-ВОСТОЧНАЯ ЕВРОПА&quot;</h3><p class="inn">ИНН 7726571783</p></div>
+<div class="score tA"><b>8</b><small>A</small></div></header>
+<p class="why">Интересна. Дистрибьютор автомобилей FAW, региональные сайты</p>
+<dl><dt>Выручка</dt><dd>70,6 млрд ₽ (2025)</dd><dt>Рост</dt><dd>−31,8%</dd>
+<dt>Сотрудники</dt><dd>242 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Авто</dd><dt>Сайт</dt><dd>spb.faw.ru</dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 5</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ПАО &quot;ЭСЭФАЙ&quot;</h3><p class="inn">ИНН 6164077483</p></div>
+<div class="score tC"><b>7,5</b><small>C</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. Холдинг, бренд Европлан работает на другом юрлице 7,5 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>65,3 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+102,7%</dd>
+<dt>Сотрудники</dt><dd>20 (2025)</dd><dt>Товарные знаки</dt><dd>4</dd>
+<dt>Отрасль</dt><dd>Холдинг</dd><dt>Сайт</dt><dd>europlan.ru</dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 5</span><span class="">штат 0</span><span class="on">знаки 1,5</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>АО &quot;ВОСХОД&quot;</h3><p class="inn">ИНН 2540230387</p></div>
+<div class="score tC"><b>6</b><small>C</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. Доход 184 млрд при 6 сотрудниках, финансовый ОКВЭД 6 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>180,4 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+102,1%</dd>
+<dt>Сотрудники</dt><dd>6 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Финансовая деятельность</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Приморский край, филиалов и представительств: 1</dd></dl>
+<div class="chips"><span class="on">выручка 5</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="on">сеть 0,5</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;НПС СНАБЖЕНИЕ&quot;</h3><p class="inn">ИНН 7730307502</p></div>
+<div class="score tC"><b>6</b><small>C</small></div></header>
+<p class="why">Опт. Снабжение, ни знаков, ни сайта 6 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>61,1 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+387,5%</dd>
+<dt>Сотрудники</dt><dd>244 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Снабжение</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 5</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;АЛЕН&quot;</h3><p class="inn">ИНН 7813653270</p></div>
+<div class="score tC"><b>5</b><small>C</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. Доход 96 млрд при нуле сотрудников, ни сайта, ни знаков Маленький штат: проверить, не техническое ли юрлицо. 5 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>96,3 млрд ₽ (2025)</dd><dt>Рост</dt><dd>−12,5%</dd>
+<dt>Сотрудники</dt><dd>0 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Аптеки по ОКВЭД</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
+<div class="chips"><span class="on">выручка 5</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;АНТАРЕС&quot;</h3><p class="inn">ИНН 7743253149</p></div>
+<div class="score tC"><b>5</b><small>C</small></div></header>
+<p class="why">Опт. Топливный опт, ни сайта, ни знаков 5 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>102,1 млрд ₽ (2025)</dd><dt>Рост</dt><dd>−20,4%</dd>
+<dt>Сотрудники</dt><dd>31 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля топливом</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 5</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;СЕТЬ СВЯЗНОЙ&quot;</h3><p class="inn">ИНН 7714617793</p></div>
+<div class="score tC"><b>2</b><small>C</small></div></header>
+<p class="why">Ликвидирована или без выручки. 62 знака, но выручка в отчётности 0 при доходе 70 млрд: проверить, идёт ли торговля</p>
+<dl><dt>Выручка</dt><dd>0 ₽ (2025)</dd><dt>Рост</dt><dd>−100%</dd>
+<dt>Сотрудники</dt><dd>24 (2025)</dd><dt>Товарные знаки</dt><dd>62</dd>
+<dt>Отрасль</dt><dd>Ритейл, выручки нет</dd><dt>Сайт</dt><dd>svyaznoy.ru</dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="on">знаки 1,5</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;СФО ПБ СЕРВИС ФИНАНС&quot;</h3><p class="inn">ИНН 9704250726</p></div>
+<div class="score tР"><b>0,5</b><small>Резерв</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. Сотрудников нет, техническая компания для финансирования</p>
+<dl><dt>Выручка</dt><dd><span class="miss">нет данных</span></dd><dt>Рост</dt><dd><span class="miss">нет данных</span></dd>
+<dt>Сотрудники</dt><dd>0 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Специальное финансовое общество</dd><dt>Сайт</dt><dd>pb-servisfinance.ru</dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>АО &quot;АКТИВАВИА&quot;</h3><p class="inn">ИНН 9710095518</p></div>
+<div class="score tР"><b>0</b><small>Резерв</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. Один сотрудник, авиационный лизинг</p>
+<dl><dt>Выручка</dt><dd><span class="miss">нет данных</span></dd><dt>Рост</dt><dd><span class="miss">нет данных</span></dd>
+<dt>Сотрудники</dt><dd>1 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Финансовая деятельность</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article></div></details><details><summary>10-50 млрд ₽: 10 компаний</summary><div class="cards"><article class="card">
+<header><div><h3>ООО &quot;ВЕСТ-СЕРВИС&quot;</h3><p class="inn">ИНН 7838013473</p></div>
+<div class="score tA"><b>9</b><small>A</small></div></header>
+<p class="why">Интересна. Автобусный перевозчик, 4196 сотрудников: повод скорее обучение и найм</p>
+<dl><dt>Выручка</dt><dd>18,4 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+26,4%</dd>
+<dt>Сотрудники</dt><dd>4 196 (2025)</dd><dt>Товарные знаки</dt><dd>1</dd>
+<dt>Отрасль</dt><dd>Транспорт и логистика</dd><dt>Сайт</dt><dd>vest-service.ru</dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
+<div class="chips"><span class="on">выручка 4</span><span class="on">штат 2</span><span class="on">знаки 1</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ПАО &quot;ВМТП&quot;</h3><p class="inn">ИНН 2504000204</p></div>
+<div class="score tA"><b>8,5</b><small>A</small></div></header>
+<p class="why">Интересна. Порт, 1869 сотрудников, сайт и знак</p>
+<dl><dt>Выручка</dt><dd>26,4 млрд ₽ (2025)</dd><dt>Рост</dt><dd>−10,8%</dd>
+<dt>Сотрудники</dt><dd>1 869 (2025)</dd><dt>Товарные знаки</dt><dd>1</dd>
+<dt>Отрасль</dt><dd>Транспорт и логистика</dd><dt>Сайт</dt><dd>vmtp.ru</dd><dt>Присутствие</dt><dd>Приморский край</dd></dl>
+<div class="chips"><span class="on">выручка 4</span><span class="on">штат 2</span><span class="on">знаки 1</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ПАО &quot;ВИНЛАБ&quot;</h3><p class="inn">ИНН 2508070347</p></div>
+<div class="score tA"><b>7,5</b><small>A</small></div></header>
+<p class="why">Интересна. Сеть алкомаркетов, 760 сотрудников, 3 знака</p>
+<dl><dt>Выручка</dt><dd>7,2 млрд ₽ (2025)</dd><dt>Рост</dt><dd>−3,5%</dd>
+<dt>Сотрудники</dt><dd>760 (2025)</dd><dt>Товарные знаки</dt><dd>3</dd>
+<dt>Отрасль</dt><dd>Ритейл</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Приморский край</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="on">штат 1</span><span class="on">знаки 1,5</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;НЕФТЬ-ГАЗ&quot;</h3><p class="inn">ИНН 6450605920</p></div>
+<div class="score tA"><b>7</b><small>A</small></div></header>
+<p class="why">Работает, повода не видно. Подрядчик нефтегаза, ни сайта, ни знаков</p>
+<dl><dt>Выручка</dt><dd>11,7 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+203%</dd>
+<dt>Сотрудники</dt><dd>391 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Строительство</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Саратовская обл, филиалов и представительств: 2</dd></dl>
+<div class="chips"><span class="on">выручка 4</span><span class="on">штат 1</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="on">сеть 0,5</span><span class="on">рост 0,5</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>АО &quot;КТК&quot;</h3><p class="inn">ИНН 3907009603</p></div>
+<div class="score tA"><b>6,5</b><small>A</small></div></header>
+<p class="why">Интересна. Производитель тары, 621 сотрудник, сайт и знак</p>
+<dl><dt>Выручка</dt><dd>9,4 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+0,8%</dd>
+<dt>Сотрудники</dt><dd>621 (2025)</dd><dt>Товарные знаки</dt><dd>1</dd>
+<dt>Отрасль</dt><dd>Производство</dd><dt>Сайт</dt><dd>tarkom.ru</dd><dt>Присутствие</dt><dd>Калининградская обл</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="on">штат 1</span><span class="on">знаки 1</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ВОСТОКРЫБПРОМ&quot;</h3><p class="inn">ИНН 2721023255</p></div>
+<div class="score tB"><b>5,5</b><small>B</small></div></header>
+<p class="why">Работает, повода не видно. Работающая компания, вне шкалы ТЗ, ни сайта, ни знаков</p>
+<dl><dt>Выручка</dt><dd>10,3 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+28%</dd>
+<dt>Сотрудники</dt><dd>259 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Рыболовство</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Хабаровский край</dd></dl>
+<div class="chips"><span class="on">выручка 4</span><span class="on">штат 1</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;НОВАЯ ГОРНАЯ УК&quot;</h3><p class="inn">ИНН 4217055884</p></div>
+<div class="score tC"><b>6</b><small>C</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. Управляющая компания угольной группы 6 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>42,2 млрд ₽ (2025)</dd><dt>Рост</dt><dd>−27,4%</dd>
+<dt>Сотрудники</dt><dd>417 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Управляющая компания группы</dd><dt>Сайт</dt><dd>sibuglemet.ru</dd><dt>Присутствие</dt><dd>Кемеровская область - Кузбасс, филиалов и представительств: 1</dd></dl>
+<div class="chips"><span class="on">выручка 4</span><span class="on">штат 1</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="on">сеть 0,5</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ДИЛМАС&quot;</h3><p class="inn">ИНН 2508086690</p></div>
+<div class="score tC"><b>5,5</b><small>C</small></div></header>
+<p class="why">Опт. Топливный опт 5,5 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>21,5 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+0,8%</dd>
+<dt>Сотрудники</dt><dd>255 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля топливом</dd><dt>Сайт</dt><dd>dilmas.ru</dd><dt>Присутствие</dt><dd>Приморский край</dd></dl>
+<div class="chips"><span class="on">выручка 4</span><span class="on">штат 1</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ЗАО &quot; ТОРГОВЫЙ ДОМ&quot; АРОМА&quot;</h3><p class="inn">ИНН 7825400757</p></div>
+<div class="score tC"><b>5</b><small>C</small></div></header>
+<p class="why">Опт. Дистрибуция алкоголя без своих знаков 5 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>14,1 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+1,2%</dd>
+<dt>Сотрудники</dt><dd>204 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля алкоголем</dd><dt>Сайт</dt><dd>am-spb.ru</dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
+<div class="chips"><span class="on">выручка 4</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ИМЭКС&quot;</h3><p class="inn">ИНН 7814795662</p></div>
+<div class="score tC"><b>4,5</b><small>C</small></div></header>
+<p class="why">Опт. Опт, 6 сотрудников 4,5 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>10,1 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+277%</dd>
+<dt>Сотрудники</dt><dd>6 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
+<div class="chips"><span class="on">выручка 4</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article></div></details><details><summary>1-10 млрд ₽: 10 компаний</summary><div class="cards"><article class="card">
+<header><div><h3>ООО &quot;ОЛВИН&quot;</h3><p class="inn">ИНН 7707597514</p></div>
+<div class="score tA"><b>8</b><small>A</small></div></header>
+<p class="why">Интересна. Производитель продуктов, 12 знаков, свой бренд</p>
+<dl><dt>Выручка</dt><dd>6,9 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+21,6%</dd>
+<dt>Сотрудники</dt><dd>247 (2025)</dd><dt>Товарные знаки</dt><dd>12</dd>
+<dt>Отрасль</dt><dd>FMCG</dd><dt>Сайт</dt><dd>davincigourmet.ru</dd><dt>Присутствие</dt><dd>Московская обл</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="on">штат 0,5</span><span class="on">знаки 1,5</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;СТР&quot;</h3><p class="inn">ИНН 7722388794</p></div>
+<div class="score tB"><b>5</b><small>B</small></div></header>
+<p class="why">Работает, повода не видно. Логистика, 50 сотрудников, есть сайт, знаков нет</p>
+<dl><dt>Выручка</dt><dd>1,1 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+14,8%</dd>
+<dt>Сотрудники</dt><dd>50 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Транспорт и логистика</dd><dt>Сайт</dt><dd>lkstr.ru</dd><dt>Присутствие</dt><dd>Московская обл</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ЗАВОД ВЗЛЕТ&quot;</h3><p class="inn">ИНН 7805685092</p></div>
+<div class="score tB"><b>4,5</b><small>B</small></div></header>
+<p class="why">Работает, повода не видно. Завод приборов, 141 сотрудник, знаков на этом ИНН нет</p>
+<dl><dt>Выручка</dt><dd>2,1 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+5,4%</dd>
+<dt>Сотрудники</dt><dd>141 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Производство оборудования</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;АРМ ТЕХНО&quot;</h3><p class="inn">ИНН 7453326420</p></div>
+<div class="score tC"><b>4</b><small>C</small></div></header>
+<p class="why">Опт. Опт оборудования, знаков нет 4 балла по шкале, но ограничено Tier C.</p>
+<dl><dt>Выручка</dt><dd>3 млрд ₽ (2025)</dd><dt>Рост</dt><dd>−61,4%</dd>
+<dt>Сотрудники</dt><dd>101 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля оборудованием</dd><dt>Сайт</dt><dd>armtehno.ru</dd><dt>Присутствие</dt><dd>Челябинская обл</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ГСБ&quot;</h3><p class="inn">ИНН 7709966750</p></div>
+<div class="score tC"><b>3,5</b><small>C</small></div></header>
+<p class="why">Работает, повода не видно. Управление недвижимостью, вне шкалы ТЗ</p>
+<dl><dt>Выручка</dt><dd>1,3 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+12,1%</dd>
+<dt>Сотрудники</dt><dd>135 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Управление недвижимостью</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;НОВО-ОЙЛ&quot;</h3><p class="inn">ИНН 4028072933</p></div>
+<div class="score tC"><b>3,5</b><small>C</small></div></header>
+<p class="why">Опт. Топливный опт, 6 сотрудников</p>
+<dl><dt>Выручка</dt><dd>1,5 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+147,3%</dd>
+<dt>Сотрудники</dt><dd>6 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля топливом</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ТОРГОВЫЙ ДОМ&quot;</h3><p class="inn">ИНН 9718150753</p></div>
+<div class="score tC"><b>3,5</b><small>C</small></div></header>
+<p class="why">Опт. Опт металла, 11 сотрудников</p>
+<dl><dt>Выручка</dt><dd>1,7 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+95,2%</dd>
+<dt>Сотрудники</dt><dd>11 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО ТД &quot;МУК&quot;</h3><p class="inn">ИНН 7455030227</p></div>
+<div class="score tC"><b>3,5</b><small>C</small></div></header>
+<p class="why">Опт. Опт, 8 сотрудников</p>
+<dl><dt>Выручка</dt><dd>3,5 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+1132,9%</dd>
+<dt>Сотрудники</dt><dd>8 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Челябинская обл</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ПОЛЕТ&quot;</h3><p class="inn">ИНН 5050075755</p></div>
+<div class="score tC"><b>3</b><small>C</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. Доход 1,4 млрд при 6 сотрудниках, ни сайта, ни знаков</p>
+<dl><dt>Выручка</dt><dd>1,4 млрд ₽ (2025)</dd><dt>Рост</dt><dd>+5,5%</dd>
+<dt>Сотрудники</dt><dd>6 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Логистика по ОКВЭД</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Московская обл</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ТЕХНОКОМ&quot;</h3><p class="inn">ИНН 7701919740</p></div>
+<div class="score tC"><b>3</b><small>C</small></div></header>
+<p class="why">Опт. Опт, 6 сотрудников</p>
+<dl><dt>Выручка</dt><dd>1,5 млрд ₽ (2025)</dd><dt>Рост</dt><dd>−3%</dd>
+<dt>Сотрудники</dt><dd>6 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 3</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article></div></details><details><summary>300 млн-1 млрд ₽: 10 компаний</summary><div class="cards"><article class="card">
+<header><div><h3>ООО &quot;ИНСИС&quot;</h3><p class="inn">ИНН 6662103947</p></div>
+<div class="score tA"><b>6</b><small>A</small></div></header>
+<p class="why">Интересна. Оператор связи, 6 знаков, сайт</p>
+<dl><dt>Выручка</dt><dd>446,5 млн ₽ (2025)</dd><dt>Рост</dt><dd>+10,8%</dd>
+<dt>Сотрудники</dt><dd>37 (2025)</dd><dt>Товарные знаки</dt><dd>6</dd>
+<dt>Отрасль</dt><dd>Телеком</dd><dt>Сайт</dt><dd>insystv.ru</dd><dt>Присутствие</dt><dd>Свердловская обл</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="">штат 0</span><span class="on">знаки 1,5</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;КРОШКА КАРТОШКА МИР&quot;</h3><p class="inn">ИНН 7713491611</p></div>
+<div class="score tA"><b>6</b><small>A</small></div></header>
+<p class="why">Интересна. Крошка Картошка: известный бренд, 12 знаков. Подъём возможен по исключению ТЗ</p>
+<dl><dt>Выручка</dt><dd>329,2 млн ₽ (2025)</dd><dt>Рост</dt><dd>+972,8%</dd>
+<dt>Сотрудники</dt><dd>35 (2025)</dd><dt>Товарные знаки</dt><dd>12</dd>
+<dt>Отрасль</dt><dd>Рестораны, бренд</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="">штат 0</span><span class="on">знаки 1,5</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;СИЛАН&quot;</h3><p class="inn">ИНН 4803001577</p></div>
+<div class="score tB"><b>5</b><small>B</small></div></header>
+<p class="why">Интересна. Производитель химии, 2 знака, сайт</p>
+<dl><dt>Выручка</dt><dd>332 млн ₽ (2025)</dd><dt>Рост</dt><dd>−36,8%</dd>
+<dt>Сотрудники</dt><dd>26 (2025)</dd><dt>Товарные знаки</dt><dd>2</dd>
+<dt>Отрасль</dt><dd>Производство</dd><dt>Сайт</dt><dd>silan.su</dd><dt>Присутствие</dt><dd>Липецкая обл</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="">штат 0</span><span class="on">знаки 1,5</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>АО &quot;ПРОДУКТЫ ЕРМОЛИНО&quot;</h3><p class="inn">ИНН 4025461628</p></div>
+<div class="score tB"><b>4,5</b><small>B</small></div></header>
+<p class="why">Интересна. Бренд Ермолино. На этом ИНН 8 сотрудников и нет знаков: найти рабочее юрлицо</p>
+<dl><dt>Выручка</dt><dd>511,7 млн ₽ (2025)</dd><dt>Рост</dt><dd>+302,9%</dd>
+<dt>Сотрудники</dt><dd>8 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>FMCG, ритейл</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Калужская обл</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ЕМС&quot;</h3><p class="inn">ИНН 7801291072</p></div>
+<div class="score tB"><b>4,5</b><small>B</small></div></header>
+<p class="why">Работает, повода не видно. Инжиниринг для горной отрасли, есть сайт</p>
+<dl><dt>Выручка</dt><dd>477,9 млн ₽ (2025)</dd><dt>Рост</dt><dd>+27,5%</dd>
+<dt>Сотрудники</dt><dd>110 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>B2B-услуги</dd><dt>Сайт</dt><dd>emc-mining.ru</dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;АН &quot;ПРОСТОР&quot;</h3><p class="inn">ИНН 7814828170</p></div>
+<div class="score tC"><b>2,5</b><small>C</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. 5 сотрудников, доход 427 млн, ни сайта, ни знаков Маленький штат: проверить, не техническое ли юрлицо.</p>
+<dl><dt>Выручка</dt><dd>415,8 млн ₽ (2025)</dd><dt>Рост</dt><dd>+184,9%</dd>
+<dt>Сотрудники</dt><dd>5 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Аренда недвижимости</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;МЭЙТС САПЛАЕР&quot;</h3><p class="inn">ИНН 7730278587</p></div>
+<div class="score tC"><b>2,5</b><small>C</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. 7 сотрудников, ни сайта, ни знаков</p>
+<dl><dt>Выручка</dt><dd>323,1 млн ₽ (2025)</dd><dt>Рост</dt><dd>+70,1%</dd>
+<dt>Сотрудники</dt><dd>7 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Курьерская деятельность по ОКВЭД</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ОПТИМА&quot;</h3><p class="inn">ИНН 6670187443</p></div>
+<div class="score tC"><b>2,5</b><small>C</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. 2 сотрудника, сдача недвижимости Маленький штат: проверить, не техническое ли юрлицо.</p>
+<dl><dt>Выручка</dt><dd>311,8 млн ₽ (2025)</dd><dt>Рост</dt><dd>−50,7%</dd>
+<dt>Сотрудники</dt><dd>2 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Аренда недвижимости</dd><dt>Сайт</dt><dd>1926.ru</dd><dt>Присутствие</dt><dd>Свердловская обл</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ТД &quot;ЭКОТЕКС&quot;</h3><p class="inn">ИНН 7728189202</p></div>
+<div class="score tC"><b>2,5</b><small>C</small></div></header>
+<p class="why">Опт. Опт текстиля, знаков нет</p>
+<dl><dt>Выручка</dt><dd>846,8 млн ₽ (2025)</dd><dt>Рост</dt><dd>+6,1%</dd>
+<dt>Сотрудники</dt><dd>20 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля</dd><dt>Сайт</dt><dd>ecotexe.ru</dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ДАЛЬЧЕРМЕТ&quot;</h3><p class="inn">ИНН 2540096950</p></div>
+<div class="score tC"><b>2</b><small>C</small></div></header>
+<p class="why">Опт. Опт металлолома</p>
+<dl><dt>Выручка</dt><dd>488,2 млн ₽ (2025)</dd><dt>Рост</dt><dd>−25,7%</dd>
+<dt>Сотрудники</dt><dd>13 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Приморский край</dd></dl>
+<div class="chips"><span class="on">выручка 2</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article></div></details><details><summary>100-300 млн ₽: 10 компаний</summary><div class="cards"><article class="card">
+<header><div><h3>ООО &quot;МЕТРОЭСК&quot;</h3><p class="inn">ИНН 7839010281</p></div>
+<div class="score tC"><b>3</b><small>C</small></div></header>
+<p class="why">Работает, повода не видно. Малый производитель, сайт, знаков нет</p>
+<dl><dt>Выручка</dt><dd>165 млн ₽ (2025)</dd><dt>Рост</dt><dd>−29,3%</dd>
+<dt>Сотрудники</dt><dd>53 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Производство оборудования</dd><dt>Сайт</dt><dd>metroesk.ru</dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
+<div class="chips"><span class="on">выручка 1</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ИМПУЛЬС&quot;</h3><p class="inn">ИНН 6658243571</p></div>
+<div class="score tC"><b>2,5</b><small>C</small></div></header>
+<p class="why">Интересна. Рестораны с сайтом, региональный бренд, доход 100 млн</p>
+<dl><dt>Выручка</dt><dd>97,1 млн ₽ (2025)</dd><dt>Рост</dt><dd>+15,2%</dd>
+<dt>Сотрудники</dt><dd>28 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Рестораны</dd><dt>Сайт</dt><dd>benhall.ru</dd><dt>Присутствие</dt><dd>Свердловская обл</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;НЕОСТРОЙ&quot;</h3><p class="inn">ИНН 5405972860</p></div>
+<div class="score tC"><b>2,5</b><small>C</small></div></header>
+<p class="why">Работает, повода не видно. Подрядчик, 8 сотрудников, ни сайта, ни знаков</p>
+<dl><dt>Выручка</dt><dd>261,5 млн ₽ (2025)</dd><dt>Рост</dt><dd>+70,7%</dd>
+<dt>Сотрудники</dt><dd>8 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Строительство</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Новосибирская обл</dd></dl>
+<div class="chips"><span class="on">выручка 1</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ПГТК&quot;</h3><p class="inn">ИНН 7811429770</p></div>
+<div class="score tC"><b>2,5</b><small>C</small></div></header>
+<p class="why">Опт. Топливный опт, 9 сотрудников</p>
+<dl><dt>Выручка</dt><dd>191,1 млн ₽ (2025)</dd><dt>Рост</dt><dd>−15,7%</dd>
+<dt>Сотрудники</dt><dd>9 (2025)</dd><dt>Товарные знаки</dt><dd>1</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля топливом</dd><dt>Сайт</dt><dd>toplivospb.ru</dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
+<div class="chips"><span class="on">выручка 1</span><span class="">штат 0</span><span class="on">знаки 1</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;КАМЫШИНСКОЕ ОПХ&quot;</h3><p class="inn">ИНН 3410062824</p></div>
+<div class="score tC"><b>2</b><small>C</small></div></header>
+<p class="why">Работает, повода не видно. Работающая компания, вне шкалы ТЗ</p>
+<dl><dt>Выручка</dt><dd>191,8 млн ₽ (2025)</dd><dt>Рост</dt><dd>+28,3%</dd>
+<dt>Сотрудники</dt><dd>64 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Сельское хозяйство</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Волгоградская обл</dd></dl>
+<div class="chips"><span class="on">выручка 1</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;СЕВЕРОВОСТОКХИММОНТАЖ&quot;</h3><p class="inn">ИНН 1435148854</p></div>
+<div class="score tC"><b>2</b><small>C</small></div></header>
+<p class="why">Работает, повода не видно. Подрядчик, ни сайта, ни знаков</p>
+<dl><dt>Выручка</dt><dd>203,7 млн ₽ (2025)</dd><dt>Рост</dt><dd>+4,4%</dd>
+<dt>Сотрудники</dt><dd>23 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Строительство</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Респ Саха (Якутия)</dd></dl>
+<div class="chips"><span class="on">выручка 1</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;СПЕЦСТРОЙМОНТАЖ-ЕКАТЕРИНБУРГ&quot;</h3><p class="inn">ИНН 6678048515</p></div>
+<div class="score tC"><b>2</b><small>C</small></div></header>
+<p class="why">Работает, повода не видно. Подрядчик, ни сайта, ни знаков</p>
+<dl><dt>Выручка</dt><dd>104,5 млн ₽ (2025)</dd><dt>Рост</dt><dd>−16,1%</dd>
+<dt>Сотрудники</dt><dd>22 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Строительство</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Свердловская обл</dd></dl>
+<div class="chips"><span class="on">выручка 1</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ФОРИНТЕК-ВОЛГА&quot;</h3><p class="inn">ИНН 6316107329</p></div>
+<div class="score tC"><b>2</b><small>C</small></div></header>
+<p class="why">Опт. Опт, 7 сотрудников</p>
+<dl><dt>Выручка</dt><dd>123,8 млн ₽ (2025)</dd><dt>Рост</dt><dd>+47%</dd>
+<dt>Сотрудники</dt><dd>7 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Оптовая торговля</dd><dt>Сайт</dt><dd>forintek-volga.ru</dd><dt>Присутствие</dt><dd>Самарская обл</dd></dl>
+<div class="chips"><span class="on">выручка 1</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;КОФЕРУМ&quot;</h3><p class="inn">ИНН 2901225042</p></div>
+<div class="score tР"><b>1,5</b><small>Резерв</small></div></header>
+<p class="why">Ликвидирована или без выручки. Компания ликвидирована</p>
+<dl><dt>Выручка</dt><dd>210,4 млн ₽ (2025)</dd><dt>Рост</dt><dd>−0,6%</dd>
+<dt>Сотрудники</dt><dd>62 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Рестораны, ликвидирована</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Архангельская обл</dd></dl>
+<div class="chips"><span class="on">выручка 1</span><span class="on">штат 0,5</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;СТАФФСЕРВИС М&quot;</h3><p class="inn">ИНН 9705194270</p></div>
+<div class="score tР"><b>1</b><small>Резерв</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. 3 сотрудника, доход 118 млн, ни сайта, ни знаков Маленький штат: проверить, не техническое ли юрлицо.</p>
+<dl><dt>Выручка</dt><dd>118,2 млн ₽ (2025)</dd><dt>Рост</dt><dd>−3,7%</dd>
+<dt>Сотрудники</dt><dd>3 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Услуги для бизнеса</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 1</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article></div></details><details><summary>50-100 млн ₽: 10 компаний</summary><div class="cards"><article class="card">
+<header><div><h3>ООО &quot;ДЖУНО&quot;</h3><p class="inn">ИНН 2901312908</p></div>
+<div class="score tC"><b>3</b><small>C</small></div></header>
+<p class="why">Интересна. Кафе с сайтом, региональный, доход 78 млн</p>
+<dl><dt>Выручка</dt><dd>77,9 млн ₽ (2025)</dd><dt>Рост</dt><dd>+136,4%</dd>
+<dt>Сотрудники</dt><dd>9 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Рестораны</dd><dt>Сайт</dt><dd>dobro.pro</dd><dt>Присутствие</dt><dd>Архангельская обл</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ЮГРУПП&quot;</h3><p class="inn">ИНН 2320225543</p></div>
+<div class="score tC"><b>3</b><small>C</small></div></header>
+<p class="why">Интересна. Сайт и IT по ОКВЭД, но 2 сотрудника: проверить</p>
+<dl><dt>Выручка</dt><dd>80,3 млн ₽ (2025)</dd><dt>Рост</dt><dd>+2421,3%</dd>
+<dt>Сотрудники</dt><dd>2 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>IT</dd><dt>Сайт</dt><dd>ygroup-team.ru</dd><dt>Присутствие</dt><dd>Краснодарский край</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;МИР ИНСТРУМЕНТА&quot;</h3><p class="inn">ИНН 8602248980</p></div>
+<div class="score tC"><b>2,5</b><small>C</small></div></header>
+<p class="why">Интересна. Региональный магазин инструмента с сайтом, небольшой</p>
+<dl><dt>Выручка</dt><dd>81,1 млн ₽ (2025)</dd><dt>Рост</dt><dd>−50,5%</dd>
+<dt>Сотрудники</dt><dd>25 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Ритейл</dd><dt>Сайт</dt><dd>mir-surgut.ru</dd><dt>Присутствие</dt><dd>Ханты-Мансийский Автономный округ - Югра</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 2</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ЛАЙФ ИНЖИНИРИНГ&quot;</h3><p class="inn">ИНН 1001336566</p></div>
+<div class="score tР"><b>1</b><small>Резерв</small></div></header>
+<p class="why">Работает, повода не видно. Монтаж, ни сайта, ни знаков</p>
+<dl><dt>Выручка</dt><dd>77,2 млн ₽ (2025)</dd><dt>Рост</dt><dd>−70,8%</dd>
+<dt>Сотрудники</dt><dd>12 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Строительство</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Респ Карелия</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;МИРМЭКС&quot;</h3><p class="inn">ИНН 5024117818</p></div>
+<div class="score tР"><b>1</b><small>Резерв</small></div></header>
+<p class="why">Работает, повода не видно. Нет сотрудников, но есть сайт: проверить</p>
+<dl><dt>Выручка</dt><dd>58,1 млн ₽ (2025)</dd><dt>Рост</dt><dd>+27,6%</dd>
+<dt>Сотрудники</dt><dd>0 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Ремонт оборудования</dd><dt>Сайт</dt><dd>mirmex-ck.ru</dd><dt>Присутствие</dt><dd>Московская обл</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="on">рост 0,5</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;СУВОРОВ&quot;</h3><p class="inn">ИНН 7448260734</p></div>
+<div class="score tР"><b>1</b><small>Резерв</small></div></header>
+<p class="why">Работает, повода не видно. Малое производство, ни сайта, ни знаков</p>
+<dl><dt>Выручка</dt><dd>71,1 млн ₽ (2025)</dd><dt>Рост</dt><dd><span class="miss">нет данных</span></dd>
+<dt>Сотрудники</dt><dd>10 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Производство</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Челябинская обл</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article><article class="card">
+<header><div><h3>ООО &quot;АЛИТ М&quot;</h3><p class="inn">ИНН 5036031587</p></div>
+<div class="score tР"><b>0,5</b><small>Резерв</small></div></header>
+<p class="why">Работает, повода не видно. Вне шкалы ТЗ</p>
+<dl><dt>Выручка</dt><dd>87,2 млн ₽ (2025)</dd><dt>Рост</dt><dd>−9,1%</dd>
+<dt>Сотрудники</dt><dd>14 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Обращение с отходами</dd><dt>Сайт</dt><dd>alitm.ru</dd><dt>Присутствие</dt><dd>Московская обл</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;УК МОСТ&quot;</h3><p class="inn">ИНН 1835085750</p></div>
+<div class="score tР"><b>0,5</b><small>Резерв</small></div></header>
+<p class="why">Работает, повода не видно. Управляющая компания дома, вне шкалы ТЗ</p>
+<dl><dt>Выручка</dt><dd>59,6 млн ₽ (2025)</dd><dt>Рост</dt><dd>+8,1%</dd>
+<dt>Сотрудники</dt><dd>14 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Управление недвижимостью</dd><dt>Сайт</dt><dd>most-it.ru</dd><dt>Присутствие</dt><dd>Удмуртская Респ</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;УМПО&quot;</h3><p class="inn">ИНН 6658190312</p></div>
+<div class="score tР"><b>0,5</b><small>Резерв</small></div></header>
+<p class="why">Работает, повода не видно. Вне шкалы ТЗ</p>
+<dl><dt>Выручка</dt><dd>72 млн ₽ (2025)</dd><dt>Рост</dt><dd>−16,3%</dd>
+<dt>Сотрудники</dt><dd>14 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Обращение с отходами</dd><dt>Сайт</dt><dd>poligon-umpo.pro</dd><dt>Присутствие</dt><dd>Свердловская обл</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
+<header><div><h3>ООО &quot;ЮЖНЫЙ КАПИТАЛ&quot;</h3><p class="inn">ИНН 2311316804</p></div>
+<div class="score tР"><b>0</b><small>Резерв</small></div></header>
+<p class="why">Холдинг или техническое юрлицо. Один сотрудник, операции с собственной недвижимостью</p>
+<dl><dt>Выручка</dt><dd>62,6 млн ₽ (2025)</dd><dt>Рост</dt><dd>−52%</dd>
+<dt>Сотрудники</dt><dd>1 (2025)</dd><dt>Товарные знаки</dt><dd>0</dd>
+<dt>Отрасль</dt><dd>Недвижимость</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>Краснодарский край</dd></dl>
+<div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article></div></details></section>
 
-<section><p class="num">1. Результат</p><h2>Шкала различает компании, но большим A достаётся почти автоматически</h2>
-<div class="tiles"><div class="tile tA"><b>15</b><span>Tier A, 6 баллов и выше</span></div><div class="tile tB"><b>2</b><span>Tier B, 4 до 5,5</span></div><div class="tile tC"><b>2</b><span>Tier C, 2 до 3,5</span></div><div class="tile tР"><b>2</b><span>Резерв, меньше 2</span></div></div>
+<section><p class="num">2. Пример на 21 компании</p><h2>Шкала различает компании, но большим A достаётся почти автоматически</h2>
+<div class="tiles"><div class="tile tA"><b>14</b><span>Tier A, 6 баллов и выше</span></div><div class="tile tB"><b>2</b><span>Tier B, 4 до 5,5</span></div><div class="tile tC"><b>3</b><span>Tier C, 2 до 3,5</span></div><div class="tile tР"><b>2</b><span>Резерв, меньше 2</span></div></div>
 <ul class="pts"><li><b>Малый бренд поднимается как задумано.</b> Леврана с оборотом 1,2 млрд ₽ и 231 сотрудником получила A благодаря своему бренду и 23 знакам.</li>
-<li><b>Выручка может перевесить смысл.</b> Холдинг Металлоинвест при нуле за отрасль всё равно попал в A.</li>
+<li><b>Холдинги теперь ограничены.</b> Металлоинвест набрал 7 баллов, но при нуле за отрасль остаётся в C, пока его не подняли вручную.</li>
 <li><b>Бренд бывает записан на другое юрлицо.</b> У ТехноНИКОЛЬ и Скилбокса на проверенном ИНН нет ни одного знака.</li></ul></section>
 
-<section><p class="num">2. Как считается балл</p><h2>Один пример по шагам: Леврана, 7,5 балла, Tier A</h2>
+<section><p class="num">3. Как считается балл</p><h2>Один пример по шагам: Леврана, 7,5 балла, Tier A</h2>
 <table><thead><tr><th>Показатель</th><th>Значение</th><th>Баллы</th></tr></thead><tbody>
 <tr><td>Выручка</td><td>1,2 млрд ₽ (2025)</td><td class="n">3</td></tr>
 <tr><td>Сотрудники</td><td>231 (2025)</td><td class="n">0,5</td></tr>
@@ -42,7 +472,7 @@ footer{color:var(--mute);font-size:14px}
 <tfoot><tr><td colspan="2">Итого</td><td class="n">7,5</td></tr></tfoot></table>
 <p>Исходные показатели и веса хранятся раздельно: поменяем вес или порог, и весь список пересчитается без нового сбора. Пример из ТЗ (выручка 150 до 200 млн ₽, небольшой штат, свой бренд, сайт, знаки) набирает 5,5 балла и сам попадает в B. Ручной подъём на Tier нужен реже, чем казалось.</p></section>
 
-<section><p class="num">3. Tier A</p><h2>Ключевые: 15 компаний для персональной проработки</h2><div class="cards"><article class="card">
+<section><p class="num">4. Tier A</p><h2>Ключевые: 14 компаний для персональной проработки</h2><div class="cards"><article class="card">
 <header><div><h3>АО &quot;ТБАНК&quot;</h3><p class="inn">ИНН 7710140679</p></div>
 <div class="score tA"><b>12,5</b><small>A</small></div></header>
 <p class="why">Масштаб, 264 знака, 7 филиалов. Выручка и штат взяты вручную.</p>
@@ -134,13 +564,6 @@ footer{color:var(--mute);font-size:14px}
 <dt>Сотрудники</dt><dd>231 (2025)</dd><dt>Товарные знаки</dt><dd>23</dd>
 <dt>Отрасль</dt><dd>Косметика, потребительский бренд</dd><dt>Сайт</dt><dd>levrana.ru</dd><dt>Присутствие</dt><dd>г Санкт-Петербург</dd></dl>
 <div class="chips"><span class="on">выручка 3</span><span class="on">штат 0,5</span><span class="on">знаки 1,5</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="on">отрасль 2</span></div></article><article class="card">
-<header><div><h3>АО &quot;ХК &quot;МЕТАЛЛОИНВЕСТ&quot;</h3><p class="inn">ИНН 7705392230</p></div>
-<div class="score tA"><b>7</b><small>A</small></div></header>
-<p class="why">Только выручка и знаки, отрасль 0 баллов. По смыслу ТЗ это не цель для A, см. раздел 7.</p>
-<dl><dt>Выручка</dt><dd>121,4 млрд ₽ (2022)</dd><dt>Рост</dt><dd>−75%, данные старые</dd>
-<dt>Сотрудники</dt><dd><span class="miss">нет данных</span></dd><dt>Товарные знаки</dt><dd>66</dd>
-<dt>Отрасль</dt><dd>Холдинг без своей операционной деятельности</dd><dt>Сайт</dt><dd>metalloinvest.com</dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
-<div class="chips"><span class="on">выручка 5</span><span class="">штат 0</span><span class="on">знаки 1,5</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
 <header><div><h3>ООО &quot;ТЕХНОНИКОЛЬ-СТРОИТЕЛЬНЫЕ СИСТЕМЫ&quot;</h3><p class="inn">ИНН 7702521529</p></div>
 <div class="score tA"><b>7</b><small>A</small></div></header>
 <p class="why">Масштаб и 20 филиалов. Знаков на этом юрлице нет: бренд, похоже, записан на другое.</p>
@@ -148,7 +571,7 @@ footer{color:var(--mute);font-size:14px}
 <dt>Сотрудники</dt><dd><span class="miss">нет данных</span></dd><dt>Товарные знаки</dt><dd>0</dd>
 <dt>Отрасль</dt><dd>Производитель стройматериалов</dd><dt>Сайт</dt><dd>tn.ru</dd><dt>Присутствие</dt><dd>г Москва, филиалов и представительств: 20</dd></dl>
 <div class="chips"><span class="on">выручка 5</span><span class="">штат 0</span><span class="">знаки 0</span><span class="on">сайт 0,5</span><span class="on">сеть 0,5</span><span class="">рост 0</span><span class="on">отрасль 1</span></div></article></div></section>
-<section><p class="num">4. Tier B</p><h2>Приоритетные: обе компании недооценены из-за пробелов в данных</h2><div class="cards"><article class="card">
+<section><p class="num">5. Tier B</p><h2>Приоритетные: обе компании недооценены из-за пробелов в данных</h2><div class="cards"><article class="card">
 <header><div><h3>ЧОУ ДПО «Скилбокс»</h3><p class="inn">ИНН 9704088880</p></div>
 <div class="score tB"><b>5,5</b><small>B</small></div></header>
 <p class="why">Образование и 4,4 млрд ₽. Знаков на этом юрлице нет: с ними компания была бы в A.</p>
@@ -163,7 +586,14 @@ footer{color:var(--mute);font-size:14px}
 <dt>Сотрудники</dt><dd><span class="miss">нет данных</span></dd><dt>Товарные знаки</dt><dd>1</dd>
 <dt>Отрасль</dt><dd>Страхование</dd><dt>Сайт</dt><dd>skpari.ru</dd><dt>Присутствие</dt><dd>г Москва, филиалов и представительств: 26</dd></dl>
 <div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="on">знаки 1</span><span class="on">сайт 0,5</span><span class="on">сеть 0,5</span><span class="">рост 0</span><span class="on">отрасль 2</span></div></article></div></section>
-<section><p class="num">5. Tier C и резерв</p><h2>Низкий приоритет: опт, техническое юрлицо и бренд с пустым юрлицом</h2><div class="cards"><article class="card">
+<section><p class="num">6. Tier C и резерв</p><h2>Низкий приоритет: опт, техническое юрлицо и бренд с пустым юрлицом</h2><div class="cards"><article class="card">
+<header><div><h3>АО &quot;ХК &quot;МЕТАЛЛОИНВЕСТ&quot;</h3><p class="inn">ИНН 7705392230</p></div>
+<div class="score tC"><b>7</b><small>C</small></div></header>
+<p class="why">Только выручка и знаки, отрасль 0 баллов. По смыслу ТЗ это не цель для A, см. раздел 7.</p>
+<dl><dt>Выручка</dt><dd>121,4 млрд ₽ (2022)</dd><dt>Рост</dt><dd>−75%, данные старые</dd>
+<dt>Сотрудники</dt><dd><span class="miss">нет данных</span></dd><dt>Товарные знаки</dt><dd>66</dd>
+<dt>Отрасль</dt><dd>Холдинг без своей операционной деятельности</dd><dt>Сайт</dt><dd>metalloinvest.com</dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
+<div class="chips"><span class="on">выручка 5</span><span class="">штат 0</span><span class="on">знаки 1,5</span><span class="on">сайт 0,5</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article><article class="card">
 <header><div><h3>ООО &quot;ТОРГОВЫЙ ДОМ &quot;МЕТИЗ&quot;</h3><p class="inn">ИНН 7446051140</p></div>
 <div class="score tC"><b>2,5</b><small>C</small></div></header>
 <p class="why">Оборот есть, бренда и знаков нет.</p>
@@ -193,7 +623,7 @@ footer{color:var(--mute);font-size:14px}
 <dt>Отрасль</dt><dd>Застройщик на один проект</dd><dt>Сайт</dt><dd><span class="miss">не найден</span></dd><dt>Присутствие</dt><dd>г Москва</dd></dl>
 <div class="chips"><span class="">выручка 0</span><span class="">штат 0</span><span class="">знаки 0</span><span class="">сайт 0</span><span class="">сеть 0</span><span class="">рост 0</span><span class="">отрасль 0</span></div></article></div></section>
 
-<section><p class="num">6. Откуда цифры</p><h2>Средние компании закрываются автоматически, по крупнейшим данных меньше</h2>
+<section><p class="num">7. Откуда цифры</p><h2>Средние компании закрываются автоматически, по крупнейшим данных меньше</h2>
 <table><thead><tr><th>Показатель</th><th>Источник</th><th>Покрытие на 21 компаниях</th></tr></thead><tbody>
 <tr><td>Выручка</td><td>Бухотчётность ФНС (ГИР БО), запасной вариант Checko</td><td>ГИР БО 15, Checko 3, вручную 2, нет 1</td></tr>
 <tr><td>Рост</td><td>Те же отчёты, два года подряд</td><td>Есть там, где есть выручка за два года</td></tr>
@@ -204,14 +634,15 @@ footer{color:var(--mute);font-size:14px}
 <tr><td>Отрасль</td><td>Код ОКВЭД</td><td>Уточнено вручную: 4</td></tr>
 <tr><td>Соцсети, мероприятия, активность в медиа</td><td>Автоматически не собираются</td><td>Пока только ручной подъём на Tier</td></tr></tbody></table></section>
 
-<section><p class="num">7. Что всплыло</p><h2>Пять мест, где расчёт ошибается, и что с ними делать</h2><div class="prob">
-<div><h3>Холдинг в Tier A</h3><p>Выручка и знаки дают Металлоинвесту 7 баллов, хотя ТЗ относит холдинги к низкому приоритету.</p><p class="fix">Предложение: при нуле за отрасль не выше C, если компанию не подняли вручную.</p></div>
+<section><p class="num">8. Что всплыло</p><h2>Пять мест, где расчёт ошибается, и что с ними делать</h2><div class="prob">
+<div><h3>Холдинг в Tier A</h3><p>Выручка и знаки дают Металлоинвесту 7 баллов, хотя ТЗ относит холдинги к низкому приоритету.</p><p class="fix">Решено: если отрасль определена и даёт 0, то не выше C, пока компанию не подняли вручную. Если отрасль просто неизвестна, потолка нет. Маленький штат не отсеивает, а только просит проверить.</p></div>
 <div><h3>Бренд на другом юрлице</h3><p>ТехноНИКОЛЬ и Скилбокс без знаков. У Мосигры выручка упала с 410 млн ₽ до 1 млн ₽, у Вайлдберриз на 79%.</p><p class="fix">Предложение: нет знаков при выручке от 1 млрд ₽ или падение больше чем наполовину отправлять на ручную проверку юрлица.</p></div>
 <div><h3>Нет численности у крупнейших</h3><p>Яндекса, ВкусВилла, Р-Фарм и других нет в открытых данных ФНС, штат даёт им 0 вместо возможных 3 баллов.</p><p class="fix">Предложение: для кандидатов в A брать штат из годовых отчётов. В этом примере A они получают и без него.</p></div>
 <div><h3>Банки и страховщики без выручки</h3><p>В бухотчётности ФНС их нет. СК ПАРИ из-за этого получила только 4 балла.</p><p class="fix">Предложение: для них считать масштаб по отчётности, которую публикует Банк России.</p></div>
 <div><h3>ОКВЭД вводит в заблуждение</h3><p>Натура Сиберика и Мерлион числятся оптом, застройщик проекта числится в инженерных изысканиях.</p><p class="fix">Предложение: отрасль определять по сайту компании и показывать, откуда взята оценка.</p></div>
 </div></section>
 
-<section><p class="num">8. Что дальше</p><h2>Строим список из базы ФНС</h2><ul class="pts"><li>Из 2 млн юрлиц отбираем компании по доходу и штату, добавляем название и отрасль, отсеиваем опт, холдинги и технические юрлица. Крупнейших компаний в этой базе нет, их добираем отдельно.</li><li>Прогоняем расчёт по оставшимся компаниям.</li><li>Смотрим долю Tier A. Если она слишком большая для персональной работы, повышаем порог: сейчас большой компании со знаками хватает почти автоматически.</li><li>Решаем по пяти правкам из предыдущего раздела и пересчитываем список.</li></ul>
+<section><p class="num">9. Что дальше</p><h2>Сначала компании от 1 млрд ₽, затем решение о следующей волне</h2><ul class="pts"><li>Берём все 39 033 компании с доходом от 1 млрд ₽ и по отчётности ФНС получаем название, отрасль и выручку. Это бесплатно и занимает около суток.</li><li>Убираем только опт и финансовые коды. По отрасли из шкалы не фильтруем: Крошка Картошка числится в аренде, а Ермолино в административных услугах. Останется около 20 000 компаний.</li><li>По ним собираем знаки, сайт и филиалы: около 5 суток при бережном темпе. Считаем Tier и смотрим долю A на настоящих цифрах.</li><li>Добираем крупнейшие компании, банки и страховщиков отдельно: в этой базе их нет.</li><li>Компании на 300 млн ₽ до 1 млрд ₽ добавляем второй волной, около 14 суток сбора, если первая покажет, что их стоит брать. Ниже 300 млн ₽ берём только по исключению за сильный бренд.</li></ul>
+<p>В итоговой выгрузке отдельно хранятся показатели, балл, Tier, состав балла и причина попадания в выборку: поменяли веса и пересчитали без нового сбора.</p></section>
 <footer><p>Выручка в рублях, год указан рядом. Цифры с пометкой «оценка» взяты вручную из открытых источников и требуют проверки. Сайты частично проверены вручную: некоторые не отвечают автоматическим запросам.</p></footer></section>
 </body></html>
